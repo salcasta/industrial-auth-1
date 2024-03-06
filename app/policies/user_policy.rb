@@ -6,10 +6,8 @@ class UserPolicy < ApplicationPolicy
     @user = user
   end
 
-  def show_photos?
-    user == current_user ||
-     !user.private? || 
-     user.followers.include?(current_user)
+  def show?
+    user == current_user || !user.private? || user.followers.include?(current_user)
   end
 
   def feed?
@@ -18,9 +16,5 @@ class UserPolicy < ApplicationPolicy
 
   def discover?
     feed?
-  end
-
-  def show?
-    true
   end
 end
