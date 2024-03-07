@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -21,7 +19,7 @@ class ApplicationPolicy
   end
 
   def new?
-    false
+    create?
   end
 
   def update?
@@ -29,7 +27,7 @@ class ApplicationPolicy
   end
 
   def edit?
-    false
+    update?
   end
 
   def destroy?

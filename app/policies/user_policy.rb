@@ -10,11 +10,15 @@ class UserPolicy < ApplicationPolicy
     user == current_user || !user.private? || user.followers.include?(current_user)
   end
 
-  def feed?
-    true
+  def update?
+    user == current_user
   end
 
-  def discover?
-    feed?
+  def edit
+    update?
+  end
+
+  def destroy?
+    user == current_user
   end
 end
