@@ -1,32 +1,16 @@
 class CommentPolicy < ApplicationPolicy
   attr_reader :user, :comment
 
-  def initialize(user, comment)
-    @user = user
-    @comment = comment
-  end
-
-  def show?
-    user == comment.author
-  end
-
-  def new?
+  def create?
     user.present?
   end
 
-  def create?
-    new?
-  end
-
-  def edit?
-    show?
-  end
-
+  ## redirects to root_url
   def update?
-    edit?
+    user.present?
   end
 
   def destroy?
-    show?
+    user.present?
   end
 end

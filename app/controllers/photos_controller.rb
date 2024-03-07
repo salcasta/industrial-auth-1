@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
 
   # GET /photos or /photos.json
   def index
-    @photos = authorize Photo.all
+    @photos = Photo.all
   end
 
   # GET /photos/1 or /photos/1.json
@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
 
   # GET /photos/new
   def new
-    @photo = authorize Photo.new
+    @photo = Photo.new
   end
 
   # GET /photos/1/edit
@@ -24,8 +24,8 @@ class PhotosController < ApplicationController
 
   # POST /photos or /photos.json
   def create
-    @photo = authorize Photo.new(photo_params)
-    @photo.owner = authorize current_user
+    @photo = Photo.new(photo_params)
+    @photo.owner = current_user
 
     respond_to do |format|
       if @photo.save
@@ -53,7 +53,7 @@ class PhotosController < ApplicationController
 
   # DELETE /photos/1 or /photos/1.json
   def destroy
-    authorize @photo.destroy
+    @photo.destroy
 
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Photo was successfully destroyed." }

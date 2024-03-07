@@ -1,4 +1,4 @@
-class FollowRequestController < ApplicationController
+class FollowRequestsController < ApplicationController
   before_action :set_follow_request, only: %i[ show edit update destroy ]
   before_action { authorize @follow_request || FollowRequest }
 

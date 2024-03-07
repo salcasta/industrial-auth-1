@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @comment = authorize Comment.new
+    @comment = Comment.new
   end
 
   # GET /comments/1/edit
@@ -22,8 +22,8 @@ class CommentsController < ApplicationController
 
   # POST /comments or /comments.json
   def create
-    @comment = authorize Comment.new(comment_params)
-    @comment.author = authorize current_user
+    @comment = Comment.new(comment_params)
+    @comment.author = current_user
 
     respond_to do |format|
       if @comment.save
@@ -51,7 +51,7 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1 or /comments/1.json
   def destroy
-    authorize @comment.destroy
+    @comment.destroy
     respond_to do |format|
       format.html { redirect_back fallback_location: root_url, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
