@@ -2,18 +2,18 @@ class FollowRequestPolicy < ApplicationPolicy
   attr_reader :user, :follow_request
 
   def index?
-    user.present?
+    true
   end
 
   def create?
-    user.present?
+    true
   end
 
   def update? 
-    user.present?
+    true
   end
 
   def destroy?
-    user.present?
+    update?
   end
 end

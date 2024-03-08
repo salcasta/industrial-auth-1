@@ -2,15 +2,15 @@ class CommentPolicy < ApplicationPolicy
   attr_reader :user, :comment
 
   def create?
-    user.present?
+    true
   end
 
   ## redirects to root_url
   def update?
-    user.present?
+    comment == user.author
   end
 
   def destroy?
-    user.present?
+    update?
   end
 end
