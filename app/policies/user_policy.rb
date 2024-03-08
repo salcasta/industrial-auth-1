@@ -10,6 +10,10 @@ class UserPolicy < ApplicationPolicy
     user == current_user || !user.private? || user.followers.include?(current_user)
   end
 
+  def liked?
+    true
+  end
+
   def feed?
     true
   end

@@ -7,7 +7,7 @@ class CommentPolicy < ApplicationPolicy
 
   ## redirects to root_url
   def update?
-    comment == user.author
+    false
   end
 
   def destroy?
