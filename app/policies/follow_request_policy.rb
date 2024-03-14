@@ -6,10 +6,6 @@ class FollowRequestPolicy < ApplicationPolicy
     @follow_request = follow_request
   end
 
-  def index?
-    true
-  end
-
   def create?
     true
   end
